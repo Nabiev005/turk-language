@@ -7,6 +7,7 @@ import Dictionary from './pages/Dictionary';
 import Grammar from './pages/Grammar';
 import Lessons from './pages/Lessons'; // Жаңы: Сабактардын тизмеси барагы
 import LessonView from './pages/LessonView';
+import VideoPractice from './pages/VideoPractice';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         
         {/* Бул жерде тандалган сабак ачылат (:id - бул өзгөрмө) */}
         <Route path="/lesson/:id" element={<LessonView />} />
+        <Route path="/cinema" element={<VideoPractice />} />
       </Routes>
     </Router>
   );

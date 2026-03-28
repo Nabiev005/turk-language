@@ -3,31 +3,41 @@ import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 
 const Nav = styled.nav`
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  height: 80px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  height: 75px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 5%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  padding: 0 6%;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 `;
 
 const Logo = styled(Link)`
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.6rem;
+  font-weight: 900;
   color: #2ecc71;
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 8px;
-  z-index: 1100;
+  gap: 10px;
+  
+  .flag-box {
+    background: #e74c3c;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-  span { color: #2c3e50; }
-  &::before { content: '🇹🇷'; font-size: 1.6rem; }
+  span { color: #2c3e50; letter-spacing: -0.5px; }
 `;
 
 const NavLinks = styled.div`
@@ -35,7 +45,7 @@ const NavLinks = styled.div`
   gap: 30px;
   align-items: center;
 
-  @media (max-width: 992px) {
+  @media (max-width: 1024px) {
     display: none; 
   }
 `;
@@ -43,94 +53,100 @@ const NavLinks = styled.div`
 const NavItem = styled(Link)<{ $active?: boolean }>`
   text-decoration: none;
   color: ${props => props.$active ? '#2ecc71' : '#5a6c7d'};
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  padding: 5px 0;
 
   &::after {
     content: '';
     position: absolute;
-    bottom: -5px;
-    left: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: ${props => props.$active ? '100%' : '0'};
-    height: 2px;
+    height: 3px;
     background: #2ecc71;
+    border-radius: 10px;
     transition: width 0.3s ease;
   }
 
-  &:hover { color: #2ecc71; &::after { width: 100%; } }
+  &:hover { 
+    color: #2ecc71; 
+    &::after { width: 100%; } 
+  }
 `;
 
-/* --- HAMBURGER MENU ICON --- */
+const ActionButton = styled.button`
+  background: #2ecc71;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(46, 204, 113, 0.2);
+
+  &:hover { 
+    background: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+  }
+
+  @media (max-width: 1024px) {
+    display: none; 
+  }
+`;
+
 const Hamburger = styled.div<{ $isOpen: boolean }>`
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 6px;
+  gap: 7px;
   z-index: 1100;
-
-  @media (max-width: 992px) { display: flex; }
-
+  
+  @media (max-width: 1024px) { display: flex; }
+  
   div {
-    width: 28px;
+    width: 30px;
     height: 3px;
     background: #2c3e50;
     border-radius: 10px;
-    transition: all 0.3s ease;
-    
-    &:nth-child(1) { transform: ${props => props.$isOpen ? 'rotate(45deg) translate(6px, 6px)' : 'none'}; }
+    transition: 0.3s;
+    &:nth-child(1) { transform: ${props => props.$isOpen ? 'rotate(45deg) translate(7px, 7px)' : 'none'}; }
     &:nth-child(2) { opacity: ${props => props.$isOpen ? '0' : '1'}; }
     &:nth-child(3) { transform: ${props => props.$isOpen ? 'rotate(-45deg) translate(7px, -7px)' : 'none'}; }
   }
 `;
 
-/* --- SIDEBAR MENU --- */
 const Sidebar = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
-  width: 280px;
+  width: 300px;
   height: 100vh;
   background: white;
-  box-shadow: 20px 0 40px rgba(0,0,0,0.1);
-  padding: 100px 30px;
+  padding: 100px 40px;
   display: flex;
   flex-direction: column;
   gap: 25px;
-  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: 0.4s ease-in-out;
   transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(-100%)'};
+  box-shadow: 15px 0 40px rgba(0,0,0,0.08);
   z-index: 1050;
 `;
 
-const Overlay = styled.div<{ $isOpen: boolean }>`
+const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.4);
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(4px);
-  display: ${props => props.$isOpen ? 'block' : 'none'};
   z-index: 1040;
-`;
-
-const ActionButton = styled.button`
-  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-  color: white;
-  padding: 10px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
-  transition: transform 0.2s;
-
-  &:hover { transform: scale(1.05); }
-
-  @media (max-width: 992px) {
-    display: none; 
-  }
 `;
 
 const Navbar = () => {
@@ -138,15 +154,16 @@ const Navbar = () => {
   const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
-  // Сабактар барагында же ички сабакта жүргөнүн текшерүү
   const isLessonsPath = location.pathname.startsWith('/lessons') || location.pathname.startsWith('/lesson/');
 
   return (
     <>
       <Nav>
-        <Logo to="/" onClick={() => setIsOpen(false)}>
-          TR<span>Лингво</span>
+        <Logo to="/" onClick={closeMenu}>
+          <div className="flag-box">TR</div>
+          <span>Лингво</span>
         </Logo>
         
         <NavLinks>
@@ -154,9 +171,9 @@ const Navbar = () => {
           <NavItem to="/dictionary" $active={location.pathname === '/dictionary'}>Сөздүк</NavItem>
           <NavItem to="/quiz" $active={location.pathname === '/quiz'}>Тесттер</NavItem>
           <NavItem to="/grammar" $active={location.pathname === '/grammar'}>Грамматика</NavItem>
-          {/* Өзгөртүү: /lessonview ордуна /lessons тизмесине багыттайбыз */}
           <NavItem to="/lessons" $active={isLessonsPath}>Сабактар</NavItem>
-          <ActionButton>Катталуу</ActionButton>
+          <NavItem to="/cinema" $active={location.pathname === '/cinema'}>Кино-Театр</NavItem>
+          <ActionButton>Кирүү</ActionButton>
         </NavLinks>
 
         <Hamburger $isOpen={isOpen} onClick={toggleMenu}>
@@ -164,16 +181,18 @@ const Navbar = () => {
         </Hamburger>
       </Nav>
 
-      <Overlay $isOpen={isOpen} onClick={toggleMenu} />
+      {isOpen && <Overlay onClick={closeMenu} />}
 
       <Sidebar $isOpen={isOpen}>
-        <NavItem to="/" $active={location.pathname === '/'} onClick={toggleMenu}>Башкы бет</NavItem>
-        <NavItem to="/dictionary" $active={location.pathname === '/dictionary'} onClick={toggleMenu}>Сөздүк</NavItem>
-        <NavItem to="/quiz" $active={location.pathname === '/quiz'} onClick={toggleMenu}>Тесттер</NavItem>
-        <NavItem to="/grammar" $active={location.pathname === '/grammar'} onClick={toggleMenu}>Грамматика</NavItem>
-        <NavItem to="/lessons" $active={isLessonsPath} onClick={toggleMenu}>Сабактар</NavItem>
-        <div style={{marginTop: '20px'}}>
-           <ActionButton style={{display: 'block', width: '100%'}}>Катталуу</ActionButton>
+        <NavItem to="/" $active={location.pathname === '/'} onClick={closeMenu}>Башкы бет</NavItem>
+        <NavItem to="/dictionary" $active={location.pathname === '/dictionary'} onClick={closeMenu}>Сөздүк</NavItem>
+        <NavItem to="/quiz" $active={location.pathname === '/quiz'} onClick={closeMenu}>Тесттер</NavItem>
+        <NavItem to="/grammar" $active={location.pathname === '/grammar'} onClick={closeMenu}>Грамматика</NavItem>
+        <NavItem to="/lessons" $active={isLessonsPath} onClick={closeMenu}>Сабактар</NavItem>
+        <NavItem to="/cinema" $active={location.pathname === '/cinema'} onClick={closeMenu}>Кино-Театр</NavItem>
+        
+        <div style={{ marginTop: 'auto', paddingBottom: '40px' }}>
+          <ActionButton style={{ display: 'block', width: '100%' }}>Кирүү</ActionButton>
         </div>
       </Sidebar>
     </>
