@@ -424,5 +424,109 @@ export const turkishLessons: Lesson[] = [
       { question: '"Мен коркуп жатам" - кантип айтылат?', options: ['Korkuyorum', 'Seviyorum', 'Biliyorum', 'Gidiyorum'], correctAnswer: 'Korkuyorum' },
       { question: '"Сүйүү" - түркчө кандай?', options: ['Nefret', 'Sevgi', 'Öfke', 'Acı'], correctAnswer: 'Sevgi' }
     ]
+  },
+  {
+    id: 'lesson-17',
+    title: '17-сабак: Дүкөн жана Базарда',
+    level: 1,
+    vocabulary: [
+      { turkish: 'Fiyat', kyrgyz: 'Баа' },
+      { turkish: 'Pahalı', kyrgyz: 'Кымбат' },
+      { turkish: 'Ucuz', kyrgyz: 'Арзан' },
+      { turkish: 'İndirim', kyrgyz: 'Арзандатуу (Скидка)' },
+      { turkish: 'Müşteri', kyrgyz: 'Кардар' },
+      { turkish: 'Para', kyrgyz: 'Акча' }
+    ],
+    grammarNote: 'Бааны сураганда "Bu ne kadar?" (Бул канча турат?) же "Kaç para?" (Канча акча?) деп сурайбыз.',
+    questions: [
+      { question: '"Бул канча турат?" - түркчө кандай?', options: ['Bu ne kadar?', 'Bu ne?', 'Nerede?', 'Kim?'], correctAnswer: 'Bu ne kadar?' },
+      { question: '"Кымбат" - түркчө кандай?', options: ['Ucuz', 'Pahalı', 'Büyük', 'Küçük'], correctAnswer: 'Pahalı' },
+      { question: '"Арзан" - түркчө кандай?', options: ['Zengin', 'Fakir', 'Ucuz', 'Pahalı'], correctAnswer: 'Ucuz' },
+      { question: '"Акча" - түркчө кандай?', options: ['Kağıt', 'Cüzdan', 'Para', 'Kart'], correctAnswer: 'Para' },
+      { question: '"Арзандатуу" (Скидка) - кайсы сөз?', options: ['İndirim', 'Bindirim', 'Satış', 'Alış'], correctAnswer: 'İndirim' },
+      { question: '"Накт акча" - кантип айтылат?', options: ['Nakit', 'Kredi kartı', 'Borç', 'Bedava'], correctAnswer: 'Nakit' },
+      { question: '"Алам" (Мен сатып алам) - кайсы этиш?', options: ['Alıyorum', 'Satıyorum', 'Bakıyorum', 'Veriyorum'], correctAnswer: 'Alıyorum' },
+      { question: '"Белек" - түркчө кандай?', options: ['Hediye', 'Paket', 'Kutu', 'Eşya'], correctAnswer: 'Hediye' },
+      { question: '"Дүкөнчү" - түркчө кандай?', options: ['Müşteri', 'Satıcı', 'Müdür', 'Memur'], correctAnswer: 'Satıcı' },
+      { question: '"Кирүү" - түркчө кандай?', options: ['Giriş', 'Çıkış', 'Açık', 'Kapalı'], correctAnswer: 'Giriş' }
+    ]
+  },
+  {
+    id: 'lesson-18',
+    title: '18-сабак: Ден-соолук (Sağlık)',
+    level: 2,
+    vocabulary: [
+      { turkish: 'Hasta', kyrgyz: 'Оорулуу' },
+      { turkish: 'İlaç', kyrgyz: 'Дары' },
+      { turkish: 'Ağrı', kyrgyz: 'Оору (боль)' },
+      { turkish: 'Eczane', kyrgyz: 'Дарыкана' },
+      { turkish: 'Reçete', kyrgyz: 'Рецепт' },
+      { turkish: 'Randevu', kyrgyz: 'Жолугушуу (запись)' }
+    ],
+    grammarNote: 'Бир жериңиз ооруп жатса "...-ым/-им ağrıyor" деп айтасыз. Мисалы: "Başım ağrıyor" (Башым ооруп жатат).',
+    questions: [
+      { question: '"Дарыкана" - түркчө кандай?', options: ['Hastane', 'Eczane', 'Pastane', 'Kütüphane'], correctAnswer: 'Eczane' },
+      { question: '"Дары" - түркчө кандай?', options: ['İlaç', 'Su', 'Zehir', 'Şurup'], correctAnswer: 'İlaç' },
+      { question: '"Ооруп жатам" - кантип айтылат?', options: ['İyiyim', 'Hastayım', 'Yorgunum', 'Açım'], correctAnswer: 'Hastayım' },
+      { question: '"Башым ооруп жатат" - кайсы сүйлөм туура?', options: ['Başım ağrıyor', 'Dişim ağrıyor', 'Kolum ağrıyor', 'Karnım ağrıyor'], correctAnswer: 'Başım ağrıyor' },
+      { question: '"Тезирээк айыгып кет!" - кантип айтылат?', options: ['Geçmiş olsun', 'Afiyet olsun', 'Tebrikler', 'Maşallah'], correctAnswer: 'Geçmiş olsun' },
+      { question: '"Тиш дарыгери" - түркчө кандай?', options: ['Göz doktoru', 'Diş hekimi', 'Çocuk doktoru', 'Cerrah'], correctAnswer: 'Diş hekimi' },
+      { question: '"Температура" (Ысытма) - түркчө кандай?', options: ['Ateş', 'Öksürük', 'Nezle', 'Grip'], correctAnswer: 'Ateş' },
+      { question: '"Жардам бергиле!" - кантип айтылат?', options: ['İmdat!', 'Dur!', 'Bak!', 'Koş!'], correctAnswer: 'İmdat!' },
+      { question: '"Тез жардам" - түркчө кандай?', options: ['Araba', 'İtfaiye', 'Ambulans', 'Polis'], correctAnswer: 'Ambulans' },
+      { question: '"Ден-соолук" - түркчө кандай?', options: ['Sağlık', 'Hastalık', 'Vücut', 'Can'], correctAnswer: 'Sağlık' }
+    ]
+  },
+  {
+    id: 'lesson-19',
+    title: '19-сабак: Шаар жана Багыттар',
+    level: 2,
+    vocabulary: [
+      { turkish: 'Cadde', kyrgyz: 'Проспект/Көчө' },
+      { turkish: 'Sokak', kyrgyz: 'Көчө' },
+      { turkish: 'Köprü', kyrgyz: 'Көпүрө' },
+      { turkish: 'Meydan', kyrgyz: 'Аянт' },
+      { turkish: 'Sağ', kyrgyz: 'Оң' },
+      { turkish: 'Sol', kyrgyz: 'Сол' }
+    ],
+    grammarNote: 'Багытты көрсөтүүдө "-а/-е" мүчөлөрү колдонулат. "Sağa dön" (Оңго бурул), "Sola dön" (Солго бурул).',
+    questions: [
+      { question: '"Оңго бурул" - түркчө кандай?', options: ['Sola dön', 'Sağa dön', 'Düz git', 'Geri dön'], correctAnswer: 'Sağa dön' },
+      { question: '"Көпүрө" - түркчө кандай?', options: ['Yol', 'Köprü', 'Tünel', 'Deniz'], correctAnswer: 'Köprü' },
+      { question: '"Түз кет" - кантип айтылат?', options: ['Düz git', 'Sağa git', 'Sola git', 'Dur'], correctAnswer: 'Düz git' },
+      { question: '"Аянт" - түркчө кандай?', options: ['Park', 'Bahçe', 'Meydan', 'Saray'], correctAnswer: 'Meydan' },
+      { question: '"Сол" - түркчө кандай?', options: ['Sağ', 'Sol', 'Ön', 'Arka'], correctAnswer: 'Sol' },
+      { question: '"Алыс" - түркчө кандай?', options: ['Yakın', 'Uzak', 'Dar', 'Geniş'], correctAnswer: 'Uzak' },
+      { question: '"Жакын" - түркчө кандай?', options: ['Uzak', 'Yakın', 'Hızlı', 'Yavaş'], correctAnswer: 'Yakın' },
+      { question: '"Бул жерде" - кантип айтылат?', options: ['Burada', 'Şurada', 'Orada', 'Nerede'], correctAnswer: 'Burada' },
+      { question: '"Карта" - түркчө кандай?', options: ['Kağıt', 'Harita', 'Kitap', 'Resim'], correctAnswer: 'Harita' },
+      { question: '"Парк" - түркчө кандай?', options: ['Park', 'Orman', 'Dağ', 'Deniz'], correctAnswer: 'Park' }
+    ]
+  },
+  {
+    id: 'lesson-20',
+    title: '20-сабак: Хобби жана Бош убакыт',
+    level: 2,
+    vocabulary: [
+      { turkish: 'Yüzmek', kyrgyz: 'Сууда сүзүү' },
+      { turkish: 'Koşmak', kyrgyz: 'Чуркоо' },
+      { turkish: 'Şarkı söylemek', kyrgyz: 'Ырдоо' },
+      { turkish: 'Dans etmek', kyrgyz: 'Бийлөө' },
+      { turkish: 'Dinlenmek', kyrgyz: 'Эс алуу' },
+      { turkish: 'Seyahat etmek', kyrgyz: 'Саякаттоо' }
+    ],
+    grammarNote: 'Эмнени жакшы көрөрүңүздү айтуу үчүн "-ы/-и/-у/-ү seviyorum" формасы колдонулат. Мисалы: "Yüzmeyi seviyorum" (Сүзгөндү жакшы көрөм).',
+    questions: [
+      { question: '"Чуркоо" - түркчө кандай?', options: ['Yürümek', 'Koşmak', 'Atlamak', 'Uyumak'], correctAnswer: 'Koşmak' },
+      { question: '"Ырдоо" - түркчө кандай?', options: ['Şarkı söylemek', 'Müzik dinlemek', 'Resim yapmak', 'Dans etmek'], correctAnswer: 'Şarkı söylemek' },
+      { question: '"Бош убакыт" - түркчө кандай?', options: ['İş zamanı', 'Boş zaman', 'Okul zamanı', 'Ders zamanı'], correctAnswer: 'Boş zaman' },
+      { question: '"Мен бийлегенди жакшы көрөм" - кантип айтылат?', options: ['Dans etmeyi seviyorum', 'Yüzmeyi seviyorum', 'Koşmayı seviyorum', 'Okumayı seviyorum'], correctAnswer: 'Dans etmeyi seviyorum' },
+      { question: '"Сүрөт тартуу" - түркчө кандай?', options: ['Resim yapmak', 'Fotoğraf çekmek', 'Yazı yazmak', 'Oyun oynamak'], correctAnswer: 'Resim yapmak' },
+      { question: '"Музыка угуу" - түркчө кандай?', options: ['Müzik dinlemek', 'Radyo bakmak', 'Şarkı söylemek', 'Gitar çalmak'], correctAnswer: 'Müzik dinlemek' },
+      { question: '"Кино көрүү" - түркчө кандай?', options: ['Film izlemek', 'Kitap okumak', 'Maç bakmak', 'Haber dinlemek'], correctAnswer: 'Film izlemek' },
+      { question: '"Эс алуу" - кайсы этиш?', options: ['Çalışmak', 'Dinlenmek', 'Yorulmak', 'Kalkmak'], correctAnswer: 'Dinlenmek' },
+      { question: '"Спорт менен машыгуу" - кантип айтылат?', options: ['Spor yapmak', 'Yemek yapmak', 'Temizlik yapmak', 'Alışveriş yapmak'], correctAnswer: 'Spor yapmak' },
+      { question: '"Китап окуу" - түркчө кандай?', options: ['Gazete okumak', 'Kitap okumak', 'Dergi okumak', 'Mektup yazmak'], correctAnswer: 'Kitap okumak' }
+    ]
   }
 ];

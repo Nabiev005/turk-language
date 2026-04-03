@@ -1,33 +1,44 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
 import Dictionary from './pages/Dictionary';
 import Grammar from './pages/Grammar';
-import Lessons from './pages/Lessons'; // Жаңы: Сабактардын тизмеси барагы
+import Lessons from './pages/Lessons'; 
 import LessonView from './pages/LessonView';
-import VideoPractice from './pages/VideoPractice';
+import CinemaPractice from './pages/CinemaPractice';
+import Welcome from './pages/Welcome';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
+
+// Навбарды кирген колдонуучуга гана көрсөтүү үчүн
+const Layout = () => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <Navbar /> : null;
+};
 
 function App() {
   return (
-    <Router>
-      <GlobalStyles />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/dictionary" element={<Dictionary />} />
-        <Route path="/grammar" element={<Grammar />} />
-        
-        {/* Бул жерде сабактардын тизмеси чыгат */}
-        <Route path="/lessons" element={<Lessons />} />
-        
-        {/* Бул жерде тандалган сабак ачылат (:id - бул өзгөрмө) */}
-        <Route path="/lesson/:id" element={<LessonView />} />
-        <Route path="/cinema" element={<VideoPractice />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <GlobalStyles />
+        <Layout />
+        <Routes>
+          <Route path="/welcome" element={<Welcome />} />
+
+          <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path="/quiz" element={<ProtectedRoute><Quiz /></ProtectedRoute>} />
+          <Route path="/dictionary" element={<ProtectedRoute><Dictionary /></ProtectedRoute>} />
+          <Route path="/grammar" element={<ProtectedRoute><Grammar /></ProtectedRoute>} />
+          <Route path="/lessons" element={<ProtectedRoute><Lessons /></ProtectedRoute>} />
+          <Route path="/lesson/:id" element={<ProtectedRoute><LessonView /></ProtectedRoute>} />
+          <Route path="/cinema" element={<ProtectedRoute><CinemaPractice /></ProtectedRoute>} />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

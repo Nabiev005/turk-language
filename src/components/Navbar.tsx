@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext'; // Авторизация контекстин коштук
 
 const Nav = styled.nav`
   background: rgba(255, 255, 255, 0.9);
@@ -100,6 +101,41 @@ const ActionButton = styled.button`
   }
 `;
 
+const LogoutButton = styled.button`
+  background: #fff1f2;
+  color: #ef4444;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 1px solid #fee2e2;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #ef4444;
+    color: white;
+  }
+`;
+
+const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  color: #2c3e50;
+  
+  .avatar {
+    width: 35px;
+    height: 35px;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+`;
+
 const Hamburger = styled.div<{ $isOpen: boolean }>`
   display: none;
   flex-direction: column;
@@ -152,9 +188,17 @@ const Overlay = styled.div`
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useAuth(); // Контексттен маалыматтарды алабыз
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+
+  const handleLogout = () => {
+    logout();
+    closeMenu();
+    navigate('/welcome');
+  };
 
   const isLessonsPath = location.pathname.startsWith('/lessons') || location.pathname.startsWith('/lesson/');
 
@@ -173,7 +217,17 @@ const Navbar = () => {
           <NavItem to="/grammar" $active={location.pathname === '/grammar'}>Грамматика</NavItem>
           <NavItem to="/lessons" $active={isLessonsPath}>Сабактар</NavItem>
           <NavItem to="/cinema" $active={location.pathname === '/cinema'}>Кино-Театр</NavItem>
-          <ActionButton>Кирүү</ActionButton>
+          
+          {/* Авторизация абалына жараша баскычтарды алмаштыруу */}
+          {isAuthenticated ? (
+            <UserInfo>
+              <div className="avatar">👤</div>
+              <span>{user?.name}</span>
+              <LogoutButton onClick={handleLogout}>Чыгуу</LogoutButton>
+            </UserInfo>
+          ) : (
+            <ActionButton onClick={() => navigate('/welcome')}>Кирүү</ActionButton>
+          )}
         </NavLinks>
 
         <Hamburger $isOpen={isOpen} onClick={toggleMenu}>
@@ -184,6 +238,13 @@ const Navbar = () => {
       {isOpen && <Overlay onClick={closeMenu} />}
 
       <Sidebar $isOpen={isOpen}>
+        {isAuthenticated && (
+           <UserInfo style={{ marginBottom: '20px' }}>
+              <div className="avatar">👤</div>
+              <span>{user?.name}</span>
+           </UserInfo>
+        )}
+
         <NavItem to="/" $active={location.pathname === '/'} onClick={closeMenu}>Башкы бет</NavItem>
         <NavItem to="/dictionary" $active={location.pathname === '/dictionary'} onClick={closeMenu}>Сөздүк</NavItem>
         <NavItem to="/quiz" $active={location.pathname === '/quiz'} onClick={closeMenu}>Тесттер</NavItem>
@@ -192,7 +253,13 @@ const Navbar = () => {
         <NavItem to="/cinema" $active={location.pathname === '/cinema'} onClick={closeMenu}>Кино-Театр</NavItem>
         
         <div style={{ marginTop: 'auto', paddingBottom: '40px' }}>
-          <ActionButton style={{ display: 'block', width: '100%' }}>Кирүү</ActionButton>
+          {isAuthenticated ? (
+            <LogoutButton style={{ width: '100%' }} onClick={handleLogout}>Чыгуу</LogoutButton>
+          ) : (
+            <ActionButton style={{ display: 'block', width: '100%' }} onClick={() => { closeMenu(); navigate('/welcome'); }}>
+              Кирүү
+            </ActionButton>
+          )}
         </div>
       </Sidebar>
     </>

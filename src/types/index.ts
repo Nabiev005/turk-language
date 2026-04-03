@@ -1,4 +1,4 @@
-// Сөздөрдүн категорияларынын тизмеси
+// 1. Бардык колдонулган категорияларды бул жерге кошуу керек
 export type CategoryId = 
   | 'daily' 
   | 'verbs' 
@@ -6,26 +6,31 @@ export type CategoryId =
   | 'colors' 
   | 'numbers' 
   | 'adjectives' 
-  | 'grammar';
+  | 'grammar'
+  | 'food'   
+  | 'health' 
+  | 'nature' 
+  | 'place'  
+  | 'time';
 
 export interface Word {
   id: number;
   turkish: string;
   kyrgyz: string;
   pronunciation: string; // Сөздүн окулушу
-  category: CategoryId;  // Кайсы топко кирет
+  category: CategoryId;  // CategoryId тибиндеги маанилер гана кабыл алынат
   
-  // Кошумча маалыматтар (Мисалдар жана деңгээл)
-  exampleSentence?: string; // Түркчө мисал: "Bugün hava çok güzel."
-  exampleKyrgyz?: string;   // Кыргызча котормосу: "Бүгүн аба ырайы абдан сонун."
+  // Кошумча маалыматтар
+  exampleSentence?: string; 
+  exampleKyrgyz?: string;   
   
-  difficulty?: 'easy' | 'medium' | 'hard'; // Сөздүн татаалдыгы
-  isLearned?: boolean; // Колдонуучу бул сөздү жаттадыбы? (прогресс үчүн)
+  difficulty?: 'easy' | 'medium' | 'hard'; 
+  isLearned?: boolean; 
 }
 
 export interface Category {
   id: CategoryId;
   title: string;
-  icon: string;   // Эмодзи же Lucide-react иконкасынын аты
-  color?: string; // Интерфейсте ар бир категорияны ар башка түс менен көрсөтүү үчүн
+  icon: string;   
+  color?: string; 
 }
