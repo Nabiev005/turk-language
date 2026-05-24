@@ -3,15 +3,15 @@ import { getMySuffix, getPluralSuffix } from '../utils/turkishLogic';
 import type { Word } from '../types';
 
 const Card = styled.div<{ $isActive: boolean }>`
-  background: ${props => props.$isActive ? 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)' : 'white'};
+  background: ${props => props.$isActive ? 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)' : 'white'};
   color: ${props => props.$isActive ? 'white' : '#2c3e50'};
-  padding: 25px;
-  border-radius: 24px;
-  box-shadow: ${props => props.$isActive ? '0 20px 40px rgba(46, 204, 113, 0.2)' : '0 10px 25px rgba(0,0,0,0.03)'};
+  padding: 24px 18px;
+  border-radius: 8px;
+  box-shadow: ${props => props.$isActive ? '0 20px 40px rgba(22, 163, 74, 0.18)' : 'var(--shadow)'};
   cursor: pointer;
   text-align: center;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid ${props => props.$isActive ? 'transparent' : '#f0f0f0'};
+  border: 1px solid ${props => props.$isActive ? 'transparent' : 'rgba(148, 163, 184, 0.18)'};
   position: relative;
   overflow: hidden;
 
@@ -27,16 +27,17 @@ const Badge = styled.span`
   right: 15px;
   background: rgba(255, 255, 255, 0.2);
   padding: 4px 10px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
 `;
 
 const MainWord = styled.h3`
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 7vw, 2rem);
   margin-bottom: 8px;
-  letter-spacing: -0.5px;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
 `;
 
 const GrammarGrid = styled.div`

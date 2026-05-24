@@ -4,24 +4,34 @@ import { useNavigate } from 'react-router-dom';
 import { turkishLessons } from '../data/lessons';
 
 const Container = styled.div`
-  max-width: 600px;
+  width: min(720px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 32px 0 56px;
   text-align: center;
 `;
 
 const LessonMap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+`;
+
+const LessonTile = styled.div`
+  background: white;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 18px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  margin-top: 50px;
 `;
 
 const LessonNode = styled.div<{ $completed?: boolean; $locked?: boolean }>`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 86px;
+  height: 86px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +74,7 @@ const LessonLabel = styled.div`
   font-weight: bold;
   color: #4b4b4b;
   margin-top: 10px;
-  font-size: 1.1rem;
+  font-size: 1rem;
 `;
 
 const Lessons = () => {
@@ -82,7 +92,7 @@ const Lessons = () => {
 
   return (
     <Container>
-      <h1 style={{fontSize: '2rem', color: '#3c3c3c'}}>Түрк тили курсу</h1>
+      <h1 style={{fontSize: '2rem', color: 'var(--text)', letterSpacing: 0}}>Түрк тили курсу</h1>
       <p style={{color: '#777'}}>Сабактарды ирети менен бүтүрүп, жаңыларын ачыңыз</p>
 
       <LessonMap>
@@ -94,7 +104,7 @@ const Lessons = () => {
           const isLocked = index !== 0 && !completedLessons.includes(turkishLessons[index - 1].id);
 
           return (
-            <div key={lesson.id} style={{ textAlign: 'center' }}>
+            <LessonTile key={lesson.id}>
               <LessonNode 
                 $completed={isCompleted}
                 $locked={isLocked}
@@ -103,7 +113,7 @@ const Lessons = () => {
                 {isCompleted ? '✅' : isLocked ? '🔒' : (index + 1)}
               </LessonNode>
               <LessonLabel>{lesson.title}</LessonLabel>
-            </div>
+            </LessonTile>
           );
         })}
       </LessonMap>

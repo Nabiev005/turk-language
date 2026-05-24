@@ -1,0 +1,35 @@
+{
+  "name": "AiNabi: Түрк тили",
+  "short_name": "AiNabi",
+  "description": "Кыргыз тилдүү колдонуучулар үчүн түрк тилин үйрөнүү платформасы.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f7fb",
+  "theme_color": "#16a34a",
+  "lang": "ky",
+  "categories": ["education", "language"],
+  "icons": [
+    {
+      "src": "/pwa-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Сөздүк",
+      "short_name": "Сөздүк",
+      "url": "/dictionary",
+      "icons": [{ "src": "/pwa-icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Сабактар",
+      "short_name": "Сабак",
+      "url": "/lessons",
+      "icons": [{ "src": "/pwa-icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ]
+}

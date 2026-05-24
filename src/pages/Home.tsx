@@ -6,17 +6,19 @@ import { motion } from 'framer-motion';
 import flagBg from '../assets/флаг.png'; 
 
 const HubContainer = styled.div`
-  max-width: 1100px;
+  width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 20px;
-  @media (min-width: 768px) {
-    padding: 40px 20px;
+  padding: 24px 0 40px;
+
+  @media (max-width: 760px) {
+    width: min(100% - 24px, 1120px);
+    padding-top: 16px;
   }
 `;
 
 const HeroSection = styled.div`
   text-align: center;
-  padding: 50px 15px;
+  padding: clamp(40px, 8vw, 78px) 18px;
   /* Сүрөт бардык экранда жакшы көрүнүшү үчүн жана текст окулушу үчүн караңгылатуу */
   background: 
     linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
@@ -24,8 +26,8 @@ const HeroSection = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 30px;
-  margin-bottom: 40px;
+  border-radius: 8px;
+  margin-bottom: 28px;
   color: white;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -33,17 +35,16 @@ const HeroSection = styled.div`
 
   @media (min-width: 768px) {
     padding: 80px 20px;
-    border-radius: 40px;
     margin-bottom: 50px;
   }
 `;
 
 const Title = styled.h1`
   /* Телефондо кичирээк, ноутбукта чоңоюп турат */
-  font-size: clamp(2rem, 8vw, 4rem);
+  font-size: clamp(2rem, 7vw, 4rem);
   margin-bottom: 10px;
   font-weight: 900;
-  letter-spacing: -1px;
+  letter-spacing: 0;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 `;
 
@@ -86,30 +87,30 @@ const StatItem = styled.div`
 
 const ModulesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  @media (min-width: 768px) {
-    gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 16px;
+
+  @media (min-width: 900px) {
+    gap: 20px;
   }
 `;
 
 const ModuleCard = styled(motion.create(Link))<{ $bgColor: string }>`
   text-decoration: none;
   background: white;
-  padding: 30px 20px;
-  border-radius: 30px;
+  padding: 28px 20px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 2px solid #f0f0f0;
+  border: 1px solid rgba(148, 163, 184, 0.18);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  box-shadow: var(--shadow);
 
   @media (min-width: 768px) {
-    padding: 40px 30px;
-    border-radius: 35px;
+    padding: 34px 28px;
   }
 
   &:hover {
@@ -121,7 +122,7 @@ const IconCircle = styled.div<{ $color: string }>`
   width: 80px;
   height: 80px;
   background: ${props => props.$color};
-  border-radius: 25px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,7 +133,6 @@ const IconCircle = styled.div<{ $color: string }>`
   @media (min-width: 768px) {
     width: 100px;
     height: 100px;
-    border-radius: 30px;
     font-size: 3rem;
   }
 
@@ -145,6 +145,7 @@ const ModuleTitle = styled.h3`
   font-size: 1.5rem;
   color: #2c3e50;
   margin-bottom: 12px;
+  letter-spacing: 0;
   @media (min-width: 768px) {
     font-size: 1.7rem;
   }
